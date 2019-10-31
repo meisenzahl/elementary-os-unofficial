@@ -201,30 +201,7 @@ apt-get install -y \
 
 # Install elementary OS initial setup
 apt-get install -y \
-  desktop-file-utils \
-  gettext \
-  git \
-  libgranite-dev \
-  libaccountsservice-dev \
-  libgnomekbd-dev \
-  libgtk-3-dev \
-  libjson-glib-dev \
-  libpwquality-dev \
-  libxml2-dev \
-  libxml2-utils \
-  meson \
-  valac
-
-cd /tmp
-git clone https://github.com/elementary/initial-setup
-cd initial-setup
-meson build --prefix=/usr
-cd build
-ninja
-ninja install
-
-cd ~
-rm -rf /tmp/initial-setup
+  io.elementary.initial-setup
 
 # Remove unnecessary packages
 apt-get purge -y \

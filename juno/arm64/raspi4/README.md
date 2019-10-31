@@ -94,12 +94,12 @@ The following example uses Docker and assumes you have Docker correctly installe
     ```
     mkdir -p artifacts
 	docker run --privileged -i \
-		-v /proc:/proc \
-		-v ${PWD}/artifacts:/artifacts \
-		-v ${PWD}:/working_dir \
-		-w /working_dir \
-		debian:latest \
-		./build.sh
+        -v /proc:/proc \
+        -v ${PWD}/artifacts:/artifacts \
+        -v ${PWD}:/working_dir \
+        -w /working_dir \
+        debian:latest \
+        ./build.sh
     ```
 
  2) When done, your image will be in the `artifacts` folder.
