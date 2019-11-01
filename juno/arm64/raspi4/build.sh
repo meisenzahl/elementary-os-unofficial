@@ -247,6 +247,34 @@ sed -i 's/$/ logo.nologo loglevel=0 quiet splash vt.global_cursor_default=0 plym
 echo "" >> /mnt/boot/firmware/config.txt
 echo "boot_delay=1" >> /mnt/boot/firmware/config.txt
 
+# Fix /etc/rc.local
+cat << \EOF | tee /mnt/etc/rc.local
+#!/bin/bash
+#
+# rc.local
+#
+# Fix sound
+if [ -n "`which pulseaudio`" ]; then
+  GrepCheck=$(cat /etc/pulse/default.pa | grep tsched=0)
+  if [ -z "$GrepCheck" ]; then
+    sed -i "s:load-module module-udev-detect:load-module module-udev-detect tsched=0:g" /etc/pulse/default.pa
+  else
+    GrepCheck=$(cat /etc/pulse/default.pa | grep "tsched=0 tsched=0")
+    if [ ! -z "$GrepCheck" ]; then
+        sed -i 's/tsched=0//g' /etc/pulse/default.pa
+        sed -i "s:load-module module-udev-detect:load-module module-udev-detect tsched=0:g" /etc/pulse/default.pa
+    fi
+  fi
+fi
+# Enable bluetooth
+if [ -n "`which hciattach`" ]; then
+  echo "Attaching Bluetooth controller ..."
+  hciattach /dev/ttyAMA0 bcm43xx 921600
+fi
+exit 0
+EOF
+chmod +x /mnt/etc/rc.local
+
 # Unmount
 UnmountIMGPartitions
 
