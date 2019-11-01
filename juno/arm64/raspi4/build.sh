@@ -203,6 +203,10 @@ apt-get install -y \
 apt-get install -y \
   io.elementary.initial-setup
 
+# Install elementary OS onboarding
+apt-get install -y \
+  io.elementary.onboarding
+
 # Remove unnecessary packages
 apt-get purge -y \
   unity-greeter \
