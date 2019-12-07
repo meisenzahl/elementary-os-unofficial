@@ -2,13 +2,13 @@
 
 set -e
 
-VERSION="juno"
+VERSION="hera"
 TARGET="arm64+raspi4"
 YYYYMMDD="$(date +%Y%m%d)"
 OUTPUT_SUFFIX=".img"
 TARGET_IMG="elementaryos-${VERSION}-${TARGET}.${YYYYMMDD}${OUTPUT_SUFFIX}"
 
-BASE_IMG_URL="https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases/download/v19/ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img.xz"
+BASE_IMG_URL="https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases/download/v25/ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img.xz"
 BASE_IMG="ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img"
 MountXZ=""
 
@@ -238,6 +238,7 @@ rm -rf /mnt/var/run/*
 
 # Configuration for elementary OS
 sed -i 's/juno/bionic/g' /mnt/etc/apt/sources.list
+sed -i 's/hera/bionic/g' /mnt/etc/apt/sources.list
 
 sed -i 's/ubuntu/elementary/g' /mnt/etc/hostname
 sed -i 's/ubuntu/elementary/g' /mnt/etc/hosts
