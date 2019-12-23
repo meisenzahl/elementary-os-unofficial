@@ -4,6 +4,13 @@
 
 To download the official version visit [https://elementary.io/](https://elementary.io/)
 
+- [Special thanks](#special-thanks)
+- [Download](#download)
+- [Installation](#installation)
+- [Known Issues](#known-issues)
+- [Support](#support)
+- [Building Locally](#building-locally)
+
 ## Special thanks
 
 The builds are based on the work of James A. Chambers alias [TheRemote](https://github.com/TheRemote).
@@ -81,6 +88,12 @@ After your Raspberry Pi 4 has booted up you can see that all storage is used.
 
 ![Size after raspi-config](docs/screenshots/0015.png "Size after raspi-config")
 
+## Known Issues
+
+- [ ] Graphics are only partly hardware accelerated.
+- [ ] 4k videos cannot be played.
+- [ ] Settings for sound are not saved across a boot.
+
 ## Support
 
 If you come across a problem open an [issue](https://github.com/meisenzahl/elementary-os-unofficial/issues).
@@ -89,11 +102,11 @@ If you come across a problem open an [issue](https://github.com/meisenzahl/eleme
 
 The following example uses Docker and assumes you have Docker correctly installed and set up:
 
- 1) Run the build:
+1.  Run the build:
 
     ```
     mkdir -p artifacts
-	docker run --privileged -i \
+    docker run --privileged -i \
         -v /proc:/proc \
         -v ${PWD}/artifacts:/artifacts \
         -v ${PWD}:/working_dir \
@@ -102,4 +115,4 @@ The following example uses Docker and assumes you have Docker correctly installe
         ./build.sh
     ```
 
- 2) When done, your image will be in the `artifacts` folder.
+2.  When done, your image will be in the `artifacts` folder.
