@@ -8,8 +8,8 @@ YYYYMMDD="$(date +%Y%m%d)"
 OUTPUT_SUFFIX=".img"
 TARGET_IMG="elementaryos-${VERSION}-${TARGET}.${YYYYMMDD}${OUTPUT_SUFFIX}"
 
-BASE_IMG_URL="https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases/download/v26/ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img.xz"
-BASE_IMG="ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img"
+BASE_IMG_URL="https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases/download/v26/ubuntu-18.04.4-preinstalled-server-arm64+raspi4.img.xz"
+BASE_IMG="ubuntu-18.04.4-preinstalled-server-arm64+raspi4.img"
 MountXZ=""
 
 function MountIMG {
